@@ -11,7 +11,8 @@ Rakendus salvestab jooksvalt avastatud sõlmed Util klassis <Long, Block> HashMa
 Kui rakendus tööle panna lisab ta kõigepealt ennast hashmap-i ning seejärel vaatab blocks.json faili ja lisab kõik failist leitud sõlmed listi.  
 Peale seda proovib ta kõikide teadaolevate sõlmedega ühendust saada(v.a iseendaga) saates neile kõigepealt POST päringu kõigi talle teadaolevate sõlmedega ning seejärel GET päringu, et saada teada neile teadaolevad sõlmed. Kui sõlm saab teada uue sõlme siis saadetakse päringud uuesti, et kõik uue info saaksid.
 
-
+Info saadetakse JSON formaadis kujul {"1600":{"ip":"127.0.0.1","port":1600},"1500":{"ip":"127.0.0.1","port":1500}}.   
+Kasutan hetkel blocki hashi asemel pordi numbrit.   
 
 Näide päringutest:  
 
