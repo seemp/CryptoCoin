@@ -34,7 +34,7 @@ Content-Type: application/json
 
 Client POST request:  
 
-POST /blocks HTTP/1.0 
+POST /blocks HTTP/1.0   
 Content-Length: 77  
 Content-Type: application/json  
 {"1700":{"ip":"127.0.0.1","port":1700},"1500":{"ip":"127.0.0.1","port":1500}}END  
