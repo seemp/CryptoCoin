@@ -20,15 +20,17 @@ public class Client {
         out.println("Accept-Language: en-US");
         out.println("Connection: Close");
         out.println();
+
         // read the response
         InputStream input = socket.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(input));
         String line;
         StringBuilder sb = new StringBuilder();
+
         while ((line = reader.readLine()) != null) {
             sb.append(line);
         }
-
+        System.out.println("GET response:" + sb);
         util.addBlocks(sb.toString().substring(sb.indexOf("{"),sb.indexOf("END")));
         System.out.println(util.getBlocks());
         socket.close();
@@ -45,16 +47,18 @@ public class Client {
         out.println("Content-Type: application/json");
         out.println(util.getBlocks()+"END");
         out.println();
+
         // read the response
         InputStream input = socket.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(input));
         String line;
         StringBuilder sb = new StringBuilder();
+
         while ((line = reader.readLine()) != null) {
             sb.append(line);
         }
 
-        System.out.println(sb.toString());
+        System.out.println("POST response:" + sb.toString());
         socket.close();
     }
 }

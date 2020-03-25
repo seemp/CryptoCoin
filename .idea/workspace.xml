@@ -6,7 +6,16 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="890d15dc-afd1-49a0-ad47-f534db4a8e1a" name="Default Changelist" comment="" />
+    <list default="true" id="890d15dc-afd1-49a0-ad47-f534db4a8e1a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/CryptoCoin_jar/CryptoCoin.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/CryptoCoin_jar/CryptoCoin.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CryptoCoin/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CryptoCoin/com/company/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CryptoCoin/com/company/gson-2.8.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/httpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/httpServer.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,10 +29,14 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1XiPkAva8312l1W2yjyGWrqLduw" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../gson-2.8.6.jar!/" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -130,10 +143,26 @@
       <workItem from="1582493722382" duration="176000" />
       <workItem from="1582654829020" duration="3510000" />
       <workItem from="1582728452271" duration="3804000" />
+      <workItem from="1582744421456" duration="571000" />
+      <workItem from="1583939825114" duration="4162000" />
+      <workItem from="1585136436761" duration="6201000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

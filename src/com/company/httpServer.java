@@ -105,6 +105,7 @@ class httpRequestHandler implements Runnable {
                 do {
                     line = br.readLine();
                     sb.append(line);
+                    System.out.println(line);
                 } while (!line.contains("END"));
 
                 util.addBlocks(sb.toString().substring(sb.indexOf("{"),sb.indexOf("END")));
