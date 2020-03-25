@@ -44,3 +44,4 @@ Server response:
 
 HTTP/1.0 200  
 
+![rakendus](https://postimg.cc/YG2JBf4y)
