@@ -3,7 +3,7 @@
 Rakenduse käivitamine:  
 
 CryptoCoin/out/artifacts/CryptoCoin_jar/  
-java -jar CryptoCoin.jar xxxx(port)  
+java -jar CryptoCoin.jar 1500(port)  
 
 
 Rakendus kasutab HTTP protokolli üle socketite. Toetab GET ja POST päringuid.   
