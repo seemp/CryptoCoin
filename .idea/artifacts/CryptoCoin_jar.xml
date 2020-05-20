@@ -1,9 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="CryptoCoin:jar">
+  <artifact type="jar" build-on-make="true" name="CryptoCoin:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/CryptoCoin_jar</output-path>
     <root id="archive" name="CryptoCoin.jar">
       <element id="module-output" name="CryptoCoin" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../../../gson-2.8.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../Downloads/bcprov-jdk15on-159.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

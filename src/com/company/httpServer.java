@@ -38,7 +38,7 @@ public class httpServer {
 }
 
 class httpRequestHandler implements Runnable {
-    private Util util = new Util();
+    private AddressUtil util = new AddressUtil();
     private final static String CRLF = "\r\n";
 
     private Socket socket;
@@ -74,9 +74,11 @@ class httpRequestHandler implements Runnable {
                 break;}
 
             StringTokenizer s = new StringTokenizer(headerLine);
-            String temp = s.nextToken();
+            String type = s.nextToken();
+            String content = s.nextToken();
+            System.out.println(content);
 
-            if (temp.equals("GET")) {
+            if (type.equals("GET")) {
 
                 String statusLine;
                 String contentTypeLine;
@@ -97,18 +99,26 @@ class httpRequestHandler implements Runnable {
                 output.write(CRLF.getBytes());
             }
 
-            if (temp.equals("POST")) {
+            if (type.equals("POST")) {
 
                 String line = "";
                 StringBuilder sb = new StringBuilder();
 
+
                 do {
                     line = br.readLine();
+
                     sb.append(line);
                     System.out.println(line);
                 } while (!line.contains("END"));
 
-                util.addBlocks(sb.toString().substring(sb.indexOf("{"),sb.indexOf("END")));
+                if (content.equals("/address")) {
+                    util.addAddress(sb.toString().substring(sb.indexOf("{"),sb.indexOf("END")));
+                }
+                if (content.equals("/transaction")) {
+                    Main.lastBlock.get(0).addTransactionJSON(sb.toString().substring(sb.indexOf("{"),sb.indexOf("END")));
+                }
+
 
                 String statusLine = "HTTP/1.0 200" + CRLF;
 
@@ -116,7 +126,7 @@ class httpRequestHandler implements Runnable {
 
                 output.write(CRLF.getBytes());
 
-                System.out.println(util.getBlocks());
+                //System.out.println(util.getBlocks());
             }
         }
 
@@ -124,7 +134,7 @@ class httpRequestHandler implements Runnable {
             output.close();
             br.close();
             socket.close();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
 }
