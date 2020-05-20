@@ -67,5 +67,5 @@ Server response:
 HTTP/1.0 200  
 
 
-
-![pilt](https://user-images.githubusercontent.com/32220947/77566611-95935300-6ece-11ea-984a-3b7b23af1e46.png)
+Blokid saadetakse laiali kujul:
+![pilt](https://user-images.githubusercontent.com/32220947/82493539-cff52700-9af0-11ea-9fa4-691a1b30e249.png)
