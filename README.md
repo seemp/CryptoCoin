@@ -24,6 +24,8 @@ addresses (prindib välja teadaolevad aadressid)
 Peale iga ülekande tegemist saadekse Transaction objekt JSON kujul kõikidele teadaolevatele aadressidele, kus see lisatakse blocki kui vastab tingimustele.
 Kui blokis on kokku 3 transaktsiooni siis pannakse blokk kokku ja saadetakse edasi.
 
+Krüpteerimiseks ja võtmete loomiseks kasutan Bouncy Castle API-t. Võtmed luuakse Elliptic Curve Digital Signature Algoritmiga. Saatmiseks teisendan byte[] array kujule, millest saab Base64 encoderiga stringi teha. Lahti kodeerides on hiljem jälle võimalik see vajadusel võtmeks teisendada.
+
 Aadressid saadetakse JSON formaadis kujul {"MEkwEwYHKoZIzj0CAQYIKoZIzj0DAQEDMgAEf+/0qdTdPnX7K3KAarO53nhWXQojn4lci8Dn06i7gw56BGW7ZYI5qxEvK5/z2aAU":{"ip":"127.0.0.1","port":1500,"publicKey":"MEkwEwYHKoZIzj0CAQYIKoZIzj0DAQEDMgAEf+/0qdTdPnX7K3KAarO53nhWXQojn4lci8Dn06i7gw56BGW7ZYI5qxEvK5/z2aAU"}}.   
 Kus on aadressi omaniku public key base64 kujul, ip ja port.
 
