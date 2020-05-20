@@ -118,6 +118,9 @@ class httpRequestHandler implements Runnable {
                 if (content.equals("/transaction")) {
                     Main.lastBlock.get(0).addTransactionJSON(sb.toString().substring(sb.indexOf("{"),sb.indexOf("END")));
                 }
+                if (content.equals("/block")) {
+                    Main.addBlockJSON(sb.toString().substring(sb.indexOf("{"),sb.indexOf("END")));
+                }
 
 
                 String statusLine = "HTTP/1.0 200" + CRLF;
@@ -126,7 +129,6 @@ class httpRequestHandler implements Runnable {
 
                 output.write(CRLF.getBytes());
 
-                //System.out.println(util.getBlocks());
             }
         }
 

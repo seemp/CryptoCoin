@@ -18,6 +18,7 @@ public class AddressUtil {
         int mapSize = addressHashMap.size();
         Map<String, Address> map = gson.fromJson(json, new TypeToken<Map<String, Address>>(){}.getType());
         addressHashMap.putAll(map);
+
         if (mapSize < addressHashMap.size()) {
             Main.getAndPostAll(Main.port, new ConcurrentHashMap<>(addressHashMap));
         }
@@ -33,6 +34,7 @@ public class AddressUtil {
     }
 
     public void addBlock(Address address){
+
         addressHashMap.put(address.getPublicKey(), address);
     }
 

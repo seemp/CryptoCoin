@@ -1,8 +1,11 @@
 package com.company;
 
-import java.security.*;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
+import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.security.spec.InvalidKeySpecException;
-import java.util.ArrayList;
+
 
 public class Transaction {
 
@@ -11,7 +14,6 @@ public class Transaction {
     public String recipient;
     public float value;
     public String signature;
-
 
     private static int sequence = 0;
 
@@ -27,7 +29,11 @@ public class Transaction {
             System.out.println("#Transaction Signature failed to verify");
             return false;
         }
-
+        if (Main.walletA.getBalance() < value) {
+            System.out.println("Not enough funds");
+            return false;
+        }
+        transactionId = calulateHash();
         return true;
     }
 
@@ -41,5 +47,14 @@ public class Transaction {
         String data = sender + recipient + value;
         byte[] signaturebytes = StringUtil.getBytesFromBase64(signature);
         return StringUtil.verifyECDSASig(StringUtil.getKeyFromString(sender), data, signaturebytes);
+    }
+
+    private String calulateHash() {
+        sequence++; //increase the sequence to avoid 2 identical transactions having the same hash
+        return StringUtil.applySha256(
+                sender +
+                        recipient +
+                        value + sequence
+        );
     }
 }

@@ -94,7 +94,7 @@ public class StringUtil {
     public static String getMerkleRoot(ArrayList<Transaction> transactions) {
         int count = transactions.size();
 
-        List<String> previousTreeLayer = new ArrayList<String>();
+        List<String> previousTreeLayer = new ArrayList<>();
         for(Transaction transaction : transactions) {
             previousTreeLayer.add(transaction.transactionId);
         }

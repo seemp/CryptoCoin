@@ -36,27 +36,42 @@ public class Wallet {
         }
     }
 
-    public float getBalance() throws NoSuchAlgorithmException, NoSuchProviderException, InvalidKeySpecException {
+    public float getBalance() {
         float total = 0;
         for (Map.Entry<Float, Transaction> item: UTXOs.entrySet()){
-            Transaction UTXO = item.getValue();
-            if(isMine(UTXO.recipient)) { //if output belongs to me ( if coins belong to me )
-                UTXOs.put(UTXO.value,UTXO); //add it to our list of unspent transactions.
-                total += UTXO.value ;
-            }
+            total = total + item.getKey();
         }
         return total;
     }
 
-    public boolean isMine(String publicKey) throws NoSuchAlgorithmException, NoSuchProviderException, InvalidKeySpecException {
-        return (StringUtil.getKeyFromString(publicKey) == this.publicKey);
-    }
+    public void removeFunds(float amount) {
+        float amountLeft = amount;
+        if (amount < getBalance()) {
+            for (float f:UTXOs.keySet()) {
+                if (amountLeft == 0){
+                    break;
+                }
+                if (f < amountLeft) {
+                    amountLeft = amountLeft - f;
+                    UTXOs.remove(f);
+                }
+                if (f >= amountLeft) {
+                    Transaction temp = UTXOs.get(f);
+                    UTXOs.remove(f);
+                    f = f - amountLeft;
+                    if (f != 0) {
+                        UTXOs.put(f, temp);
+                    }
 
+                    amountLeft = 0;
+                }
+
+            }
+        }
+    }
 
     public Transaction sendFunds(PublicKey _recipient,float value ) {
 
-
-        float total = 0;
 
         Transaction newTransaction = new Transaction(publicKey, _recipient , value);
         newTransaction.generateSignature(privateKey);

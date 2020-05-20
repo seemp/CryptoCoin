@@ -35,12 +35,12 @@ public class Block {
 
     public void mineBlock(int difficulty) {
         merkleRoot = StringUtil.getMerkleRoot(transactions);
-        String target = StringUtil.getDifficultyString(difficulty); //Create a string with difficulty * "0"
+        String target = StringUtil.getDifficultyString(difficulty);
         while(!hash.substring( 0, difficulty).equals(target)) {
             nonce ++;
             hash = calculateHash();
         }
-        System.out.println("Block Mined!!! : " + hash);
+        System.out.println("Block Mined! : " + hash);
     }
 
     public boolean addTransaction(Transaction transaction) throws NoSuchAlgorithmException, NoSuchProviderException, InvalidKeySpecException {
@@ -51,22 +51,27 @@ public class Block {
                 return false;
             }
         }
+        for (Transaction t:transactions) {
+            if (t.signature.equals(transaction.signature)) {
+                System.out.println("Signature already exists");
+                return false;
+            }
+        }
 
         transactions.add(transaction);
         System.out.println("Transaction Successfully added to Block");
+        if (StringUtil.getStringFromKey(Main.walletA.publicKey).equals(transaction.sender)){
+        Main.walletA.removeFunds(transaction.value);}
+        if (Main.walletA.publicKey.equals(StringUtil.getKeyFromString(transaction.recipient))) {
+            Main.walletA.UTXOs.put(transaction.value, transaction);
+            System.out.println(Main.walletA.getBalance());
+        }
         return true;
     }
 
     public void addTransactionJSON(String json) throws NoSuchAlgorithmException, NoSuchProviderException, InvalidKeySpecException {
         Gson gson = new Gson();
-        transactions.add(gson.fromJson(json, Transaction.class));
-        System.out.println("Transaction Successfully added to Block");
-
-        Transaction transaction = transactions.get(transactions.size() - 1);
-        System.out.println(transaction.value + "IGOT IT ");
-        if (Main.walletA.publicKey.equals(StringUtil.getKeyFromString(transaction.recipient))) {
-            Main.walletA.UTXOs.put(transaction.value, transaction);
-            System.out.println(Main.walletA.getBalance());
-        }
+        Transaction transaction = gson.fromJson(json, Transaction.class);
+        addTransaction(transaction);
     }
 }

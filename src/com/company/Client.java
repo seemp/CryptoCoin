@@ -41,25 +41,13 @@ public class Client {
 
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
-        // send an HTTP request to the web server
         out.println("POST /address HTTP/1.0");
         out.println("Content-Length: " + util.getBlocks().getBytes().length);
         out.println("Content-Type: application/json");
         out.println(util.getBlocks()+"END");
         out.println();
 
-        // read the response
-        InputStream input = socket.getInputStream();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-        String line;
-        StringBuilder sb = new StringBuilder();
-
-        while ((line = reader.readLine()) != null) {
-            sb.append(line);
-        }
-
-        System.out.println("POST response:" + sb.toString());
-        socket.close();
+        ReadTheResponse(socket);
     }
 
     public void postTransaction(InetAddress ip, int port, Transaction transaction) throws IOException {
@@ -67,14 +55,30 @@ public class Client {
 
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
-        // send an HTTP request to the web server
         out.println("POST /transaction HTTP/1.0");
         out.println("Content-Length: " + StringUtil.getJson(transaction).getBytes().length);
         out.println("Content-Type: application/json");
         out.println(StringUtil.getJson(transaction)+"END");
         out.println();
 
-        // read the response
+        ReadTheResponse(socket);
+    }
+
+    public void postBlock(InetAddress ip, int port, Block block) throws IOException {
+        Socket socket = new Socket(ip, port);
+
+        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+
+        out.println("POST /block HTTP/1.0");
+        out.println("Content-Length: " + StringUtil.getJson(block).getBytes().length);
+        out.println("Content-Type: application/json");
+        out.println(StringUtil.getJson(block)+"END");
+        out.println();
+
+        ReadTheResponse(socket);
+    }
+
+    private void ReadTheResponse(Socket socket) throws IOException {
         InputStream input = socket.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(input));
         String line;

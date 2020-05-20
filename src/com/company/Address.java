@@ -14,10 +14,6 @@ public class Address {
         this.publicKey = publicKey;
     }
 
-    public long getToken() {
-       return getPort();
-    }
-
     public String getPublicKey() {
         return publicKey;
     }
