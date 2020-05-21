@@ -11,6 +11,8 @@ Rakendus salvestab jooksvalt avastatud sõlmed Util klassis <String, Address> Ha
 Kui rakendus tööle panna lisab ta kõigepealt ennast hashmap-i ning seejärel vaatab blocks.json faili ja lisab kõik failist leitud sõlmed listi.  
 Peale seda proovib ta kõikide teadaolevate sõlmedega ühendust saada(v.a iseendaga) saates neile kõigepealt POST päringu kõigi talle teadaolevate sõlmedega ning seejärel GET päringu, et saada teada neile teadaolevad sõlmed. Kui sõlm saab teada uue sõlme siis saadetakse päringud uuesti, et kõik uue info saaksid.
 
+Esimeses node-is mine-takse genesis block.(kui port on 1500) Ülejäänud uutele node-idele saadetakse kõik teadaolevad blockid kui node tuleb online.
+
 Peale info saamist jääb programm kuulama edasiseid käsklusi.
 
 balance (näitab rahakoti kontojääki)
