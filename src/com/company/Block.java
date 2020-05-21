@@ -10,6 +10,7 @@ import java.util.Date;
 
 public class Block {
 
+    public long nr;
     public String hash;
     public String previousHash;
     public String merkleRoot;
@@ -17,7 +18,8 @@ public class Block {
     public long timeStamp;
     public int nonce;
 
-    public Block(String previousHash ) {
+    public Block(String previousHash, long previousNumber ) {
+        this.nr = previousNumber + 1;
         this.previousHash = previousHash;
         this.timeStamp = new Date().getTime();
 
@@ -57,6 +59,7 @@ public class Block {
                 return false;
             }
         }
+
 
         transactions.add(transaction);
         System.out.println("Transaction Successfully added to Block");

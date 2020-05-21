@@ -38,7 +38,7 @@ public class AddressUtil {
         addressHashMap.put(address.getPublicKey(), address);
     }
 
-    public String getBlocks(){
+    public String getAddress(){
         return gson.toJson(addressHashMap);
     }
 

@@ -72,11 +72,12 @@ public class Wallet {
 
     public Transaction sendFunds(PublicKey _recipient,float value ) {
 
+            Transaction newTransaction = new Transaction(publicKey, _recipient, value);
 
-        Transaction newTransaction = new Transaction(publicKey, _recipient , value);
-        newTransaction.generateSignature(privateKey);
+            newTransaction.generateSignature(privateKey);
 
-        return newTransaction;
+            return newTransaction;
+
     }
 
 }

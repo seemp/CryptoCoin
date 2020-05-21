@@ -29,7 +29,7 @@ public class Transaction {
             System.out.println("#Transaction Signature failed to verify");
             return false;
         }
-        if (Main.walletA.getBalance() < value) {
+        if (sender.equals(StringUtil.getStringFromKey(Main.walletA.publicKey)) && Main.walletA.getBalance() < value) {
             System.out.println("Not enough funds");
             return false;
         }
@@ -50,7 +50,7 @@ public class Transaction {
     }
 
     private String calulateHash() {
-        sequence++; //increase the sequence to avoid 2 identical transactions having the same hash
+        sequence++;
         return StringUtil.applySha256(
                 sender +
                         recipient +

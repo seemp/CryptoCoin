@@ -10,6 +10,7 @@ import java.net.Socket;
 import java.util.StringTokenizer;
 
 public class httpServer {
+
     public void runServer(int port) {
         ServerSocket server_socket;
         try {
@@ -86,7 +87,14 @@ class httpRequestHandler implements Runnable {
 
                 statusLine = "HTTP/1.0 200" + CRLF;
                 contentTypeLine = "Content-Type: application/json";
-                entityBody = util.getBlocks()+"END";
+                entityBody = util.getAddress()+"END";
+                if (content.equals("/blocks")) {
+                    if (!Main.lastBlock.get(0).transactions.isEmpty()){
+                        Main.addBlock(Main.lastBlock.get(0));
+                    }
+                    entityBody = StringUtil.getJson(Main.blockchain)+"END";
+                    System.out.println(entityBody);
+                }
 
                 output.write(statusLine.getBytes());
 
@@ -120,6 +128,9 @@ class httpRequestHandler implements Runnable {
                 }
                 if (content.equals("/block")) {
                     Main.addBlockJSON(sb.toString().substring(sb.indexOf("{"),sb.indexOf("END")));
+                }
+                if (content.equals("/blocks")) {
+                    Main.addBlocksJSON(sb.toString().substring(sb.indexOf("{"),sb.indexOf("END")));
                 }
 
 

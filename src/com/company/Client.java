@@ -3,6 +3,7 @@ package com.company;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class Client {
     private AddressUtil util = new AddressUtil();
@@ -32,7 +33,35 @@ public class Client {
         }
         System.out.println("GET response:" + sb);
         util.addAddress(sb.toString().substring(sb.indexOf("{"),sb.indexOf("END")));
-        System.out.println(util.getBlocks());
+        socket.close();
+    }
+
+    public void getBlocks(InetAddress ip, int port) throws IOException {
+        Socket socket = new Socket(ip, port);
+
+        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+
+        // send an HTTP request to the web server
+        out.println("GET /blocks HTTP/1.0");
+        out.println("Host: 127.0.0.1: " + port);
+        out.println("User-Agent: Simple Http Client");
+        out.println("Content-Type: application/json");
+        out.println("Accept-Language: en-US");
+        out.println("Connection: Close");
+        out.println();
+
+        // read the response
+        InputStream input = socket.getInputStream();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+        String line;
+        StringBuilder sb = new StringBuilder();
+
+        while ((line = reader.readLine()) != null) {
+            sb.append(line);
+        }
+
+        Main.addBlocksJSON(sb.toString().substring(sb.indexOf("["),sb.indexOf("END")));
+
         socket.close();
     }
 
@@ -42,9 +71,9 @@ public class Client {
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
         out.println("POST /address HTTP/1.0");
-        out.println("Content-Length: " + util.getBlocks().getBytes().length);
+        out.println("Content-Length: " + util.getAddress().getBytes().length);
         out.println("Content-Type: application/json");
-        out.println(util.getBlocks()+"END");
+        out.println(util.getAddress()+"END");
         out.println();
 
         ReadTheResponse(socket);
@@ -73,6 +102,20 @@ public class Client {
         out.println("Content-Length: " + StringUtil.getJson(block).getBytes().length);
         out.println("Content-Type: application/json");
         out.println(StringUtil.getJson(block)+"END");
+        out.println();
+
+        ReadTheResponse(socket);
+    }
+
+    public void postBlocks(InetAddress ip, int port, ArrayList<Block> blockMap) throws IOException {
+        Socket socket = new Socket(ip, port);
+
+        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+
+        out.println("POST /blocks HTTP/1.0");
+        out.println("Content-Length: " + StringUtil.getJson(blockMap).getBytes().length);
+        out.println("Content-Type: application/json");
+        out.println(StringUtil.getJson(blockMap)+"END");
         out.println();
 
         ReadTheResponse(socket);
