@@ -3,7 +3,6 @@ package com.company;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import javax.swing.text.BadLocationException;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.security.PublicKey;
@@ -15,7 +14,7 @@ public class Main {
     public static ArrayList<Block> blockchain = new ArrayList<>();
     public static HashMap<Long, Block> blockHashMap = new HashMap<>();
     public static ArrayList<Block> lastBlock = new ArrayList<>();
-
+    public static Block genesis = new Block("0", 0L);
     public static int difficulty = 4;
     public static Wallet walletA;
     public static Transaction genesisTransaction;
@@ -52,6 +51,8 @@ public class Main {
             Block block1 = new Block(genesis.hash, 1);
             lastBlock.add(block1);
         }else {
+            Block block1 = new Block(genesis.hash, 1);
+            lastBlock.add(block1);
             getAllBlocks(port, map);
         }
 
@@ -170,8 +171,13 @@ public class Main {
     }
 
     public static Boolean isBlockValid(Block block) {
+        if (blockchain.size() > 1) {
         Block previous = blockchain.get(blockchain.size() - 1);
         return block.previousHash.equals(previous.hash) && block.nr == previous.nr -1;
+        } else {
+            return block.previousHash.equals(genesis.hash) && block.nr == genesis.nr + 1;
+        }
+
     }
 
     public static void addBlockJSON(String newBlock) {
@@ -248,6 +254,7 @@ public class Main {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
             Block last = blockchain.get(blockchain.size()-1);
             lastBlock.add(new Block(last.hash,last.nr));
         });

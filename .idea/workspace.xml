@@ -9,19 +9,8 @@
     <list default="true" id="890d15dc-afd1-49a0-ad47-f534db4a8e1a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/CryptoCoin_jar/CryptoCoin.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/CryptoCoin_jar/CryptoCoin.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CryptoCoin/com/company/Block.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CryptoCoin/com/company/Block.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CryptoCoin/com/company/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CryptoCoin/com/company/Client.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CryptoCoin/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CryptoCoin/com/company/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CryptoCoin/com/company/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CryptoCoin/com/company/Transaction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CryptoCoin/com/company/Wallet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CryptoCoin/com/company/Wallet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CryptoCoin/com/company/httpRequestHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CryptoCoin/com/company/httpRequestHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/AddressUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/AddressUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Wallet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Wallet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/httpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/httpServer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -161,7 +150,7 @@
       <workItem from="1589368750651" duration="20725000" />
       <workItem from="1589631841072" duration="3168000" />
       <workItem from="1589913293648" duration="1604000" />
-      <workItem from="1589958632509" duration="52021000" />
+      <workItem from="1589958632509" duration="59516000" />
     </task>
     <servers />
   </component>
